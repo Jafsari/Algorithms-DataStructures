@@ -122,8 +122,6 @@ class LinkedList {
         // if the first condition if false, then use this.getLast
         const node = new Node(data, previous.next); // create a new node, where the current previous.next is the next for it
         previous.next = node; // now assign the new previous.next to be the node that was added
-      }
-      
-
+    }
 }
     
