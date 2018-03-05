@@ -10,6 +10,7 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
+
 class Node { //Creating the node
     constructor(data){
       this.data = data;
@@ -29,4 +30,23 @@ class Tree {
     constructor(){
         this.root = null
     }
+    traverseBFS(fn){
+        const arr = [this.root] // create an array with the root already inside of it
+        while(arr.length){ // as long as their is something inside of the array
+        const node = arr.shift() // shift from the array
+        arr.push(...node.children); // add the elements of the node's children
+        fn(node)
+        }
+    }
 }
+
+    const letters = [];
+    const t = new Tree();
+    t.root = new Node('a');
+    t.root.add('b');
+    t.root.add('c');
+    t.root.add('d')
+    t.traverseBFS(node => {
+      letters.push(node.data);
+    });
+console.log(letters)
