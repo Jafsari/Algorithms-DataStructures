@@ -38,15 +38,14 @@ class Tree {
         fn(node)
         }
     }
+    traverseDF(fn){
+        const arr = [this.root] // create an array with the root inside of it
+        while(arr.length){ // as long as the array is true
+            const node = arr.shift(); // take out the first element of the array
+            arr.unshift(...node.children) //add the children of the node to the front of the array instead of the back
+            fn(node)// use function onto the node
+        }
+    }
+
 }
 
-    const letters = [];
-    const t = new Tree();
-    t.root = new Node('a');
-    t.root.add('b');
-    t.root.add('c');
-    t.root.add('d')
-    t.traverseBFS(node => {
-      letters.push(node.data);
-    });
-console.log(letters)
