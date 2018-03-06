@@ -19,7 +19,7 @@ class Node {
     }
   
     insert(data) {
-      if (data < this.data && this.left) { // check if data is less than the root , and the left node of the root
+      if (data < this.data && this.left) { // check if data is less than the root , and the left node is true
         this.left.insert(data); // it it is, and there is already a left to that root, keep recursing down the tree
       } else if (data < this.data) { // If their is no left, create a new node and add it to the tree.
         this.left = new Node(data);
@@ -29,5 +29,21 @@ class Node {
         this.right = new Node(data);
       }
     }
+    contains(data) {
+        if (this.data === data) { //if the root is equal to data return it
+          return this;
+        }
+            // recursively go down the search tree 
+        if (data > this.data && this.right) { 
+          return this.right.contains(data);
+        } else if (data < this.data && this.left) {
+          return this.left.contains(data);
+        }
+    
+        return null;
+      }
+    
   
+
+
 }
