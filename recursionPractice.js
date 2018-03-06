@@ -68,3 +68,22 @@ function recursiveMultiplier(arr,num){
   }
   
   recursiveMultiplier([1,2,3],4)
+
+  // this is the best recursive factorial solution out there. Guaranteed :)
+  function factorial(num){
+    let result = [];
+    function help(){
+      if (num > 0){
+        result.unshift(num)
+        num = num -1
+        help()
+      }
+    }
+    help()
+    return result.reduce((a,b) => {
+      return a*b
+    },1)
+  }
+  
+  factorial(4)
+  
