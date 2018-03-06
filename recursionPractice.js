@@ -53,3 +53,18 @@ function loop(base,expo){
   }
   
   reverseString('justin')
+
+  //[1,2,3],3 === [3,6,9]
+function recursiveMultiplier(arr,num){
+    let result = [];
+    function help(){
+      if (arr.length > 0){
+        result.push(arr.shift() * num)
+        help()
+      }
+    }
+    help()
+    return result
+  }
+  
+  recursiveMultiplier([1,2,3],4)
