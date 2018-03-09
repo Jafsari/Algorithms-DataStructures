@@ -69,21 +69,70 @@ function recursiveMultiplier(arr,num){
   
   recursiveMultiplier([1,2,3],4)
 
-  // this is the best recursive factorial solution out there. Guaranteed :)
-  function factorial(num){
-    let result = [];
+  function multiply(arr){
+    var copy = arr.slice()
+    var result =[];
     function help(){
-      if (num > 0){
-        result.unshift(num)
-        num = num -1
-        help()
+      if(arr.length > 0){
+        result.push(arr.shift() * 2)
+        help();
       }
     }
-    help()
-    return result.reduce((a,b) => {
-      return a*b
-    },1)
+  help();
+  return "" + result === "" + copy.map((element) => {
+    return element * 2
+  })
   }
   
-  factorial(4)
+  function find(arr,k){
+    var count = 0;
+    function help(){
+      if (arr[count] !== k){
+        count++
+        help();
+      }
+    }
+    help();
+    return count;
+  }
+  
+  find([10,9,8,7,6,5,4,3,2,1],7)
+  
+  function range(x,y){
+    var count = x;
+    var result = [];
+    function help(){
+      if(x < y-1){
+        count++
+        x++
+        result.push(count)
+        help();
+      }
+    }
+    help();
+    return result
+  }
+  range(2, 9)
+  
+  
+  function count(str){
+    var obj = {};
+    var count = 0;
+    function help(){
+      if (count < str.length){
+        if(str[count] in obj){
+          obj[str[count]]++
+          count++
+        } else {
+          obj[str[count]] = 1;
+          count++
+        }
+        help();
+      }
+    }
+    help();
+    return obj;
+  }
+  count('thisisgoingtowork')
+  
   
