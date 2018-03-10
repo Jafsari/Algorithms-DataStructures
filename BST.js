@@ -32,7 +32,39 @@ class Tree{
       if(this.right)this.right.depthFirstTraversal(fn,order)
       if(order === 'post-order') fn(this.data)
     }
-    
+    breadthFirstTraversal(fn){
+      var queue = [this];
+      while(queue.length){
+        var treeNode = queue.shift();
+        fn(treeNode)
+        if(treeNode.left){
+          queue.push(treeNode.left)
+        }
+        if(treeNode.right){
+          queue.push(treeNode.right)
+        }
+      }
+    }
+    getMinVal(){
+      if(!this.data){
+        return null
+      }
+    if(!this.left){
+      return this.data
+    } else {
+      return this.left.getMinVal()
+    }
+      }
+    getMaxVal(){
+      if(!this.data){
+        return null;
+      }
+      if(!this.right){
+        return this.data
+      } else {
+        return this.right.getMaxVal();
+      }
+    }
   }
   
   let cool = new Tree(50);
@@ -40,10 +72,10 @@ class Tree{
   cool.insert(70)
   cool.insert(40)
   cool.insert(60)
-  cool.depthFirstTraversal(log,'in-order')
-  cool.depthFirstTraversal(log,'pre-order')
+  cool.getMaxVal()
   
   function log(data){
-    console.log(data)
+    console.log(data.data)
   }
+  
   
