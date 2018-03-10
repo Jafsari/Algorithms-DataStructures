@@ -1,49 +1,49 @@
-// --- Directions
-// 1) Implement the Node class to create
-// a binary search tree.  The constructor
-// should initialize values 'data', 'left',
-// and 'right'.
-// 2) Implement the 'insert' method for the
-// Node class.  Insert should accept an argument
-// 'data', then create an insert a new node
-// at the appropriate location in the tree.
-// 3) Implement the 'contains' method for the Node
-// class.  Contains should accept a 'data' argument
-// and return the Node in the tree with the same value.
-
-class Node {
-    constructor(data) {
-      this.data = data;
-      this.left = null;
-      this.right = null;
+class Tree{
+    constructor(data){
+      this.data = data
+      this.left = null
+      this.right = null
     }
-  
-    insert(data) {
-      if (data < this.data && this.left) { // check if data is less than the root , and the left node is true
-        this.left.insert(data); // it it is, and there is already a left to that root, keep recursing down the tree
-      } else if (data < this.data) { // If their is no left, create a new node and add it to the tree.
-        this.left = new Node(data);
-      } else if (data > this.data && this.right) { // same goes with greater
-        this.right.insert(data);
-      } else if (data > this.data) {
-        this.right = new Node(data);
+    insert(data){
+    if(data <= this.data){
+      if(!this.left) this.left = new Tree(data);
+      else this.left.insert(data);
+    }
+      else if (data > this.data){
+        if(!this.right) this.right = new Tree(data)
+        else this.right.insert(data)
       }
     }
-    contains(data) {
-        if (this.data === data) { //if the root is equal to data return it
-          return this;
-        }
-            // recursively go down the search tree 
-        if (data > this.data && this.right) { 
-          return this.right.contains(data);
-        } else if (data < this.data && this.left) {
-          return this.left.contains(data);
-        }
-    
-        return null;
+    contains(data){
+      if (data === this.data) return this
+      else if (data < this.data){
+        if(!this.left) return false
+        else return this.left.contains(data)
       }
+      else if(data > this.data){
+        if(!this.right) return false
+        else return this.right.contains(data)
+      }
+    }
+    depthFirstTraversal(fn,order){
+      if(order === 'pre-order') fn(this.data)
+      if (this.left) this.left.depthFirstTraversal(fn,order)
+      if(order === 'in-order') fn(this.data)
+      if(this.right)this.right.depthFirstTraversal(fn,order)
+      if(order === 'post-order') fn(this.data)
+    }
     
+  }
   
-
-
-}
+  let cool = new Tree(50);
+  cool.insert(30)
+  cool.insert(70)
+  cool.insert(40)
+  cool.insert(60)
+  cool.depthFirstTraversal(log,'in-order')
+  cool.depthFirstTraversal(log,'pre-order')
+  
+  function log(data){
+    console.log(data)
+  }
+  
