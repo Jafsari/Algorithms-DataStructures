@@ -37,6 +37,50 @@ class Graph{
         return -1
       }
     }
+    breadthFirstSearch(start){
+      var queue = [start];
+      var result = [];
+      var visited = {};
+      var currentVertex;
+      
+      visited[start] = true;
+      
+      while(queue.length){
+        currentVertex = queue.shift()
+        result.push(currentVertex);
+        
+        for(var i = 0; i < this.adjacencyList[currentVertex].length ; i ++){
+          var value = this.adjacencyList[currentVertex][i]
+          if(!visited[value]){
+            visited[value] = true
+            queue.push(this.adjacencyList[currentVertex][i])
+          }
+        }
+      }
+      return result
+    }
+    depthFirstSearch(start){
+      var stack = [start];
+      var result = [];
+      var visited = {};
+      var currentVertex;
+      
+      visited[start] = true;
+      
+      while(stack.length){
+        currentVertex = stack.pop()
+        result.push(currentVertex)
+        
+        for(var i = 0; i < this.adjacencyList[currentVertex].length ; i++){
+          var value = this.adjacencyList[currentVertex][i]
+          if(!visited[value]){
+            visited[value] = true;
+            stack.push(this.adjacencyList[currentVertex][i])
+          }
+        }
+      }
+    return result
+    }
   }
   
   var cool = new Graph();
@@ -48,7 +92,8 @@ class Graph{
   cool.addEdge(2,3)
   cool.addEdge(3,5)
   cool.addEdge(5,7)
-  cool.addEdge(7,9)
-  cool.removeVertex(3)
-  
+  cool.addEdge(7,9) 
+  cool.addEdge(2,9)
+  console.log(cool.breadthFirstSearch(2))
+  console.log(cool.depthFirstSearch(2))
   console.log(cool)
