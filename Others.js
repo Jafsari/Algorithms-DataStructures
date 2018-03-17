@@ -19,3 +19,27 @@ function tripleAdd(num1){
   }
    
   quadrupleAdd(10)(20)(30, 40);
+
+  (function hello(){
+    return 'Hello World'
+  })();
+
+  (function multiply(num1,num2){
+    return num1 * num2
+  })(10,10);
+
+  function createButtons() {
+    for (var i = 1; i <= 5; i++) {
+      var body = document.getElementsByTagName("BODY")[0];
+      var button = document.createElement("BUTTON");
+      button.innerHTML = 'Button ' + i;
+      (function(num) {
+        button.onclick = function() {
+           alert('This is button ' + num);
+        }
+      })(i);
+      body.appendChild(button);
+    }
+ }
+  
+ createButtons();
