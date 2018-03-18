@@ -138,3 +138,103 @@ const roadTrip2 = {
 const getTripDistance = roadTrip1.getDistance.bind(roadTrip2, 'km');
  
 getTripDistance(' in total');
+
+
+const user1 = {
+  name: 'Jordan',
+  age: 28,
+};
+ 
+const user2 = {
+  name: 'Jordan',
+  age: 28,
+};
+ 
+console.log(user1 == user2);
+console.log(JSON.stringify(user1) === JSON.stringify(user2));
+
+
+var string1 = 'Tampa';
+var string2 = string1;
+string1 = 'Venice';
+ 
+console.log(string2);
+ 
+ 
+////////////////////////////////
+ 
+ 
+var person1 = {
+  name: 'Alex',
+  age: 30
+};
+ 
+var person2 = person1;
+ 
+person2.name = 'Kyle';
+ 
+console.log(person1);
+
+
+const data1 = 'Jordan Smith';
+ 
+const data2 = [].filter.call(data1, function(elem, index) {
+  return index > 6;
+});
+ 
+// only use 'read-only' methods: filter, forEach, map, some, every, etc.
+// cannot use: push, pop, splice, shift, reverse, etc.
+ 
+console.log(data2);
+
+
+
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+ 
+a[b] = 200;
+// a['[object Object]'] = 200
+ 
+a[c] = 400;
+// a['[object Object]'] = 400
+ 
+console.log(a[b]);
+// console.log(a['[object Object]']);
+
+
+
+var x = 10;
+ 
+function y() {
+    function x() {}
+    x = 100;
+    return;
+    // function x() {}
+}
+ 
+y();
+ 
+console.log(x);
+
+
+const account1 = {
+  name: 'Jen',
+  totalAmount: 5000,
+  deductAmount: function(amount) {
+    this.totalAmount -= amount;
+    return 'Amount in account: ' + this.totalAmount;
+  },
+};
+ 
+const account2 = {
+  name: 'James',
+  totalAmount: 8000,
+};
+ 
+const withdrawFromAccount = function(amount) {
+  return account1.deductAmount.bind(account2, amount);
+};
+ 
+console.log(withdrawFromAccount(500)());
+console.log(withdrawFromAccount(200)());
