@@ -238,3 +238,21 @@ const withdrawFromAccount = function(amount) {
  
 console.log(withdrawFromAccount(500)());
 console.log(withdrawFromAccount(200)());
+
+
+
+function fizzBuzz(n){
+  for( let i = 1; i < n ; i ++){
+    if (i % 3 === 0 && i % 5 === 0){
+      console.log("fizzbuzz")
+    } else if (i%3 === 0){
+      console.log('buzz')
+    } else if(i%5 === 0) {
+      console.log('fizz')
+    } else {
+      console.log(i)
+    }
+  }
+}
+
+fizzBuzz(100)
