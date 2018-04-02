@@ -61,4 +61,87 @@ class Queue {
         return item;
     }
     }
+
+    // Works, but it's a bit hacky, and I want to re do it later.
+
+class Node{
+    constructor(data,next = null){
+      this.data = data;
+      this.next = next;
+    }
+  }
+  
+  class Stack{
+    constructor(){
+      this.first = null;
+      this.last = null;
+      this.size = 0;
+    }
+    push(data){
+      let node = new Node(data)
+      if (!this.first){
+        this.first = node;
+        this.last = node;
+        return this.size++
+      }
+      let temp = this.first;
+      this.first = node;
+      this.first.next = temp;
+      return this.size++
+    }
+    pop(){
+        if (!this.first)
+        return null;
+  
+      var temp = this.first;
+  
+      if (this.first==this.last) {
+        this.last=null;
+      }
+  
+      this.first = this.first.next;
+      this.size--;
+      return temp.data
+  
+      }
+    peek(){
+     return this.first
+    }
+  }
+  
+  // var stack = new Stack();
+  
+  // stack.push(1)
+  // stack.push(2)
+  // stack.push(3)
+  // stack.pop()
+  // stack.pop()
+  
+  
+  class myQueue {
+    constructor(){
+      this.head = new Stack();
+      this.second = new Stack();
+    }
+    enqueue(data){
+      this.head.push(data)
+    }
+    dequeue(){
+      while (this.head.peek() !== null){
+       this.second.push(this.head.pop())
+        }
+      let item = this.second.pop();
+      while(this.second.peek() !== null){
+        this.head.push(this.second.pop())
+      }
+      return item;
+    }
+  }
+  
+  var Queue = new myQueue();
+  Queue.enqueue(1)
+  Queue.enqueue(2)
+  Queue.enqueue(3)
+  Queue.dequeue()
+  
     
