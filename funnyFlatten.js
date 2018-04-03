@@ -38,3 +38,22 @@ function funnyFlatten(arr){
     }
     
     flatten([[1],[[2],[[3]],[4]],5])
+
+
+    //wrapper method 
+    function flatten(arr){
+        var cool =[];
+      function recurse(arr){
+        for (let i = 0; i < arr.length ; i ++){
+          if (Array.isArray(arr[i])){
+           recurse(arr[i]);
+          } else {
+            cool.push(arr[i])
+          }
+        }
+    
+      }
+      recurse(arr)
+      return cool;
+    }
+    flatten([[1],[[2],[[3]],[4]],5])
