@@ -134,5 +134,23 @@ function recursiveMultiplier(arr,num){
     return obj;
   }
   count('thisisgoingtowork')
+
+  function find(obj,val){
+    var arr = [];
+    function findBob(obj){
+        for (var key in obj){
+          if (obj[key] === val){
+            return true
+          } else{ 
+            if (typeof obj[key] === 'object'){
+              return findBob(obj[key])
+            }
+          }
+        }
+      }
+      findBob(obj)
+      return findBob(obj)
+    }
+    find(obj,"cool")
   
   
