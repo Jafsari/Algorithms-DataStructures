@@ -72,16 +72,19 @@ class Tree{
       }
       return arr;
   }
+
+  // MASTER THE CALL STACK, MASTER THE TREES
+  
   //Root-Left-Right
   preOrder(){
     var container = [];
     var node = this;
     function traverse (node) {
         container.push(node.data);
-        if(node.left && traverse(node.left)){
+        if(node.left){
           traverse(node.left);
         }
-        if(node.right && traverse(node.right)){
+        if(node.right){
           traverse(node.right);
         }
     }
@@ -93,11 +96,11 @@ class Tree{
     var container = [];
     var node = this;
    function traverse (node) {
-        if (node.left && traverse(node.left)) {
+        if (node.left) {
           traverse(node.left);
         }
         container.push(node.data);
-        if (node.right && traverse(node.right)){
+        if (node.right){
           traverse(node.right);
         }
    }
@@ -109,10 +112,10 @@ class Tree{
     var container = [];
     var node = this;
     function traverse (node) {
-        if (node.left && traverse(node.left)) {
+        if (node.left) {
           traverse(node.left);
         }
-        if (node.right && traverse(node.right)) {
+        if (node.right) {
           traverse(node.right);
         }
         container.push(node.data);
