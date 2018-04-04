@@ -40,7 +40,6 @@ class Tree{
       }
     }
   }
-  
   //BreadthFirstSearch Left Side
   BFSL(){
     var arr =[];
@@ -120,9 +119,28 @@ class Tree{
     }
     traverse(node);
     return container;
-
+}
+  getMinVal(){
+    if(!this.data){
+      return null
+    }
+  if(!this.left){
+    return this.data
+  } else {
+    return this.left.getMinVal()
   }
-  
+    }
+  getMaxVal(){
+    if(!this.data){
+      return null;
+    }
+    if(!this.right){
+      return this.data
+    } else {
+      return this.right.getMaxVal();
+    }
+  }
+ 
 }
 
 var cool = new Tree(50);

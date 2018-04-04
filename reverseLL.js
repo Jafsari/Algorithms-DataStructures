@@ -1,4 +1,4 @@
-reverse(){
+function reverse(){
     let current = this.head;
     let next = current.next
     let prev = null;
