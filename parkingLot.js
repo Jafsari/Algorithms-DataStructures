@@ -26,6 +26,11 @@ class ParkingLot{
         }
       }
     }
+    available(){
+        if (this.number < this.capacity){
+            console.log('There are spots in the parking Lot!')
+        }
+    }
   }
   
   var parkingLot = new ParkingLot(3);
