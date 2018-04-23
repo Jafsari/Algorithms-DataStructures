@@ -31,3 +31,21 @@ function fib(n){
   }
   fib = memoize(fib);
   fib(100)
+
+//O(n) no memo
+  const fibonacciRecursive = (n) => {
+    const result = [0,1];
+    let count = 2;
+    const recurse = (n) => {
+      if (count <= n){
+        const a = result[count-1];
+        const b = result[count-2];
+        result.push(a+b);
+        count++;
+        recurse(n);
+      }
+    };
+    recurse(n);
+    return result[n];
+  };
+  fibonacciRecursive(6);
