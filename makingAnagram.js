@@ -21,10 +21,18 @@ const makingAnagram = (a,b) => {
         count+= Math.abs(container[key] - obj[key]);
    
       } else {
-        count+=container[key]*2;
+        count+=container[key];
         
       }
+      
     }
-    return count;
+    for (let prop in obj){
+      if (prop in container){
+      } else {
+        count+=obj[prop];
+      }
+    }
+   return count;
   };
-  makingAnagram('cde','abc');
+  makingAnagram('fcrxzwscanmligyxyvym','jxwtrhvujlmrpdoqbisbwhmgpmeoke');
+  
